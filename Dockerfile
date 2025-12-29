@@ -1,24 +1,16 @@
-FROM node:20-alpine
+# Use official Directus image which comes pre-configured
+FROM directus/directus:11-alpine
 
-WORKDIR /app
+USER root
+WORKDIR /directus
 
-# Install system dependencies if needed (e.g. for sharp image processing)
-# RUN apk add --no-cache \
-#     python3 \
-#     make \
-#     g++
+# Copy extensions if any
+COPY ./extensions ./extensions
 
-# Copy package files
-COPY package*.json ./
-
-# Install dependencies
-RUN npm ci --omit=dev
-
-# Copy the rest of the application
-COPY . .
-
-# Expose Directus port
+# Expose the default port
 EXPOSE 8055
 
-# Command to run
-CMD ["npm", "start"]
+# Ensure we use the correct start command (built-in)
+CMD : \
+    && corepack enable \
+    && directus start
