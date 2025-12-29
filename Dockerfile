@@ -1,16 +1,18 @@
-# Use official Directus image which comes pre-configured
-FROM directus/directus:11-alpine
+FROM node:20-alpine
 
-USER root
-WORKDIR /directus
+WORKDIR /app
 
-# Copy extensions if any
-COPY ./extensions ./extensions
+# Copy package files
+COPY package*.json ./
 
-# Expose the default port
+# Install dependencies (production only)
+RUN npm ci --omit=dev
+
+# Copy the rest of the backend files
+COPY . .
+
+# Expose Directus port
 EXPOSE 8055
 
-# Ensure we use the correct start command (built-in)
-CMD : \
-    && corepack enable \
-    && directus start
+# Command to run
+CMD ["npm", "start"]
