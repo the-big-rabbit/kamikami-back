@@ -12,6 +12,6 @@
   "description": "",
   "dependencies": {
     "directus": "^11.14.0",
-    "mysql2": "^3.16.0"
+    "pg": "^8.11.0"
   }
 }
