@@ -1,6 +1,6 @@
 FROM node:20-alpine
 
-WORKDIR /directus
+WORKDIR /app
 
 # Install system dependencies if needed (e.g. for sharp image processing)
 # RUN apk add --no-cache \
