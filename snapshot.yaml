@@ -1,0 +1,1415 @@
+version: 1
+directus: 11.11.0
+vendor: postgres
+collections:
+  - collection: gages
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: status
+      archive_value: archived
+      collapse: open
+      collection: gages
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: sort
+      translations: null
+      unarchive_value: draft
+      versioning: false
+    schema:
+      name: gages
+  - collection: parties
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: status
+      archive_value: archived
+      collapse: open
+      collection: parties
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: sort
+      translations: null
+      unarchive_value: draft
+      versioning: false
+    schema:
+      name: parties
+fields:
+  - collection: gages
+    field: id
+    type: integer
+    meta:
+      collection: gages
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: gages
+      data_type: integer
+      default_value: nextval('gages_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: gages
+    field: status
+    type: string
+    meta:
+      collection: gages
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - background: var(--theme--primary-background)
+            color: var(--theme--primary)
+            foreground: var(--theme--primary)
+            text: $t:published
+            value: published
+          - background: var(--theme--background-normal)
+            color: var(--theme--foreground)
+            foreground: var(--theme--foreground)
+            text: $t:draft
+            value: draft
+          - background: var(--theme--warning-background)
+            color: var(--theme--warning)
+            foreground: var(--theme--warning)
+            text: $t:archived
+            value: archived
+        showAsDot: true
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - color: var(--theme--primary)
+            text: $t:published
+            value: published
+          - color: var(--theme--foreground)
+            text: $t:draft
+            value: draft
+          - color: var(--theme--warning)
+            text: $t:archived
+            value: archived
+      readonly: false
+      required: false
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: status
+      table: gages
+      data_type: character varying
+      default_value: draft
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: gages
+    field: sort
+    type: integer
+    meta:
+      collection: gages
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: sort
+      table: gages
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: gages
+    field: user_created
+    type: uuid
+    meta:
+      collection: gages
+      conditions: null
+      display: user
+      display_options: null
+      field: user_created
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 4
+      special:
+        - user-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: user_created
+      table: gages
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_users
+      foreign_key_column: id
+  - collection: gages
+    field: date_created
+    type: timestamp
+    meta:
+      collection: gages
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 5
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_created
+      table: gages
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: gages
+    field: user_updated
+    type: uuid
+    meta:
+      collection: gages
+      conditions: null
+      display: user
+      display_options: null
+      field: user_updated
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 6
+      special:
+        - user-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: user_updated
+      table: gages
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_users
+      foreign_key_column: id
+  - collection: gages
+    field: date_updated
+    type: timestamp
+    meta:
+      collection: gages
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 7
+      special:
+        - date-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_updated
+      table: gages
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: gages
+    field: titre
+    type: string
+    meta:
+      collection: gages
+      conditions: null
+      display: null
+      display_options: null
+      field: titre
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 8
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: titre
+      table: gages
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: gages
+    field: description
+    type: text
+    meta:
+      collection: gages
+      conditions: null
+      display: null
+      display_options: null
+      field: description
+      group: null
+      hidden: false
+      interface: input-multiline
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 9
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: description
+      table: gages
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: gages
+    field: couleur
+    type: string
+    meta:
+      collection: gages
+      conditions: null
+      display: null
+      display_options: null
+      field: couleur
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - color: '#2ECDA7'
+            text: vert
+            value: vert
+          - color: '#FFC23B'
+            text: jaune
+            value: jaune
+          - color: '#FFA439'
+            text: orange
+            value: orange
+          - color: '#E35169'
+            text: rouge
+            value: rouge
+      readonly: false
+      required: true
+      sort: 11
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: couleur
+      table: gages
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: gages
+    field: tags
+    type: json
+    meta:
+      collection: gages
+      conditions: null
+      display: null
+      display_options: null
+      field: tags
+      group: null
+      hidden: false
+      interface: tags
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 12
+      special:
+        - cast-json
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: tags
+      table: gages
+      data_type: json
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: gages
+    field: compatible_genre
+    type: json
+    meta:
+      collection: gages
+      conditions: null
+      display: null
+      display_options: null
+      field: compatible_genre
+      group: null
+      hidden: false
+      interface: select-multiple-dropdown
+      note: null
+      options:
+        choices:
+          - text: Homme/Femme
+            value: HF
+          - text: Homme/Homme
+            value: HH
+          - text: Femme/Femme
+            value: FF
+      readonly: false
+      required: true
+      sort: 13
+      special:
+        - cast-json
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: compatible_genre
+      table: gages
+      data_type: json
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: gages
+    field: mode
+    type: json
+    meta:
+      collection: gages
+      conditions: null
+      display: null
+      display_options: null
+      field: mode
+      group: null
+      hidden: false
+      interface: select-multiple-dropdown
+      note: null
+      options:
+        choices:
+          - text: Soft
+            value: soft
+          - text: Spicy
+            value: spicy
+          - text: Hot
+            value: hot
+      readonly: false
+      required: true
+      sort: 10
+      special:
+        - cast-json
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: mode
+      table: gages
+      data_type: json
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: parties
+    field: id
+    type: integer
+    meta:
+      collection: parties
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: parties
+      data_type: integer
+      default_value: nextval('parties_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: parties
+    field: status
+    type: string
+    meta:
+      collection: parties
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - background: var(--theme--primary-background)
+            color: var(--theme--primary)
+            foreground: var(--theme--primary)
+            text: $t:published
+            value: published
+          - background: var(--theme--background-normal)
+            color: var(--theme--foreground)
+            foreground: var(--theme--foreground)
+            text: $t:draft
+            value: draft
+          - background: var(--theme--warning-background)
+            color: var(--theme--warning)
+            foreground: var(--theme--warning)
+            text: $t:archived
+            value: archived
+        showAsDot: true
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - color: var(--theme--primary)
+            text: $t:published
+            value: published
+          - color: var(--theme--foreground)
+            text: $t:draft
+            value: draft
+          - color: var(--theme--warning)
+            text: $t:archived
+            value: archived
+      readonly: false
+      required: false
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: status
+      table: parties
+      data_type: character varying
+      default_value: draft
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: parties
+    field: sort
+    type: integer
+    meta:
+      collection: parties
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: sort
+      table: parties
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: parties
+    field: user_created
+    type: uuid
+    meta:
+      collection: parties
+      conditions: null
+      display: user
+      display_options: null
+      field: user_created
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 4
+      special:
+        - user-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: user_created
+      table: parties
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_users
+      foreign_key_column: id
+  - collection: parties
+    field: date_created
+    type: timestamp
+    meta:
+      collection: parties
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 5
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_created
+      table: parties
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: parties
+    field: user_updated
+    type: uuid
+    meta:
+      collection: parties
+      conditions: null
+      display: user
+      display_options: null
+      field: user_updated
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 6
+      special:
+        - user-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: user_updated
+      table: parties
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_users
+      foreign_key_column: id
+  - collection: parties
+    field: date_updated
+    type: timestamp
+    meta:
+      collection: parties
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 7
+      special:
+        - date-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_updated
+      table: parties
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: parties
+    field: code_partie
+    type: string
+    meta:
+      collection: parties
+      conditions: null
+      display: null
+      display_options: null
+      field: code_partie
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 8
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: code_partie
+      table: parties
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: parties
+    field: joueur1
+    type: string
+    meta:
+      collection: parties
+      conditions: null
+      display: null
+      display_options: null
+      field: joueur1
+      group: null
+      hidden: false
+      interface: input-code
+      note: null
+      options:
+        language: JSON
+        template: |-
+          {
+            "name": "Joueur 1",
+            "gender": "F",
+            "position": 1,
+            "score": 0,
+            "pawn": {
+              "shape": "sphere",
+              "color": "#e8b4b8",
+              "shininess": 0.5,
+              "accessory": "none"
+            }
+          }
+      readonly: false
+      required: false
+      sort: 9
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: joueur1
+      table: parties
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: parties
+    field: joueur2
+    type: string
+    meta:
+      collection: parties
+      conditions: null
+      display: null
+      display_options: null
+      field: joueur2
+      group: null
+      hidden: false
+      interface: input-code
+      note: null
+      options:
+        language: JSON
+        template: |-
+          {
+            "name": "Joueur 2",
+            "gender": "M",
+            "position": 1,
+            "score": 0,
+            "pawn": {
+              "shape": "sphere",
+              "color": "#e8b4b8",
+              "shininess": 0.5,
+              "accessory": "none"
+            }
+          }
+      readonly: false
+      required: false
+      sort: 10
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: joueur2
+      table: parties
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: parties
+    field: tour_actuel
+    type: integer
+    meta:
+      collection: parties
+      conditions: null
+      display: null
+      display_options: null
+      field: tour_actuel
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 11
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: tour_actuel
+      table: parties
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: parties
+    field: intensite
+    type: string
+    meta:
+      collection: parties
+      conditions: null
+      display: null
+      display_options: null
+      field: intensite
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: Soft
+            value: soft
+          - text: Spicy
+            value: spicy
+          - text: Hot
+            value: hot
+      readonly: false
+      required: false
+      sort: 12
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: intensite
+      table: parties
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: parties
+    field: statut
+    type: string
+    meta:
+      collection: parties
+      conditions: null
+      display: null
+      display_options: null
+      field: statut
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: Attente
+            value: attente
+          - text: En cours
+            value: en_cours
+          - text: Terminée
+            value: terminee
+      readonly: false
+      required: false
+      sort: 13
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: statut
+      table: parties
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: parties
+    field: historique
+    type: json
+    meta:
+      collection: parties
+      conditions: null
+      display: null
+      display_options: null
+      field: historique
+      group: null
+      hidden: false
+      interface: input-code
+      note: null
+      options:
+        template: '[]'
+      readonly: false
+      required: false
+      sort: 14
+      special:
+        - cast-json
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: historique
+      table: parties
+      data_type: json
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: parties
+    field: gage_actuel
+    type: json
+    meta:
+      collection: parties
+      conditions: null
+      display: null
+      display_options: null
+      field: gage_actuel
+      group: null
+      hidden: false
+      interface: input-code
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 15
+      special:
+        - cast-json
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: gage_actuel
+      table: parties
+      data_type: json
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: parties
+    field: cam2cam_enabled
+    type: boolean
+    meta:
+      collection: parties
+      conditions: null
+      display: null
+      display_options: null
+      field: cam2cam_enabled
+      group: null
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 16
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: cam2cam_enabled
+      table: parties
+      data_type: boolean
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+relations:
+  - collection: gages
+    field: user_updated
+    related_collection: directus_users
+    meta:
+      junction_field: null
+      many_collection: gages
+      many_field: user_updated
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: gages
+      column: user_updated
+      foreign_key_table: directus_users
+      foreign_key_column: id
+      constraint_name: gages_user_updated_foreign
+      on_update: NO ACTION
+      on_delete: NO ACTION
+  - collection: gages
+    field: user_created
+    related_collection: directus_users
+    meta:
+      junction_field: null
+      many_collection: gages
+      many_field: user_created
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: gages
+      column: user_created
+      foreign_key_table: directus_users
+      foreign_key_column: id
+      constraint_name: gages_user_created_foreign
+      on_update: NO ACTION
+      on_delete: NO ACTION
+  - collection: parties
+    field: user_updated
+    related_collection: directus_users
+    meta:
+      junction_field: null
+      many_collection: parties
+      many_field: user_updated
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: parties
+      column: user_updated
+      foreign_key_table: directus_users
+      foreign_key_column: id
+      constraint_name: parties_user_updated_foreign
+      on_update: NO ACTION
+      on_delete: NO ACTION
+  - collection: parties
+    field: user_created
+    related_collection: directus_users
+    meta:
+      junction_field: null
+      many_collection: parties
+      many_field: user_created
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: parties
+      column: user_created
+      foreign_key_table: directus_users
+      foreign_key_column: id
+      constraint_name: parties_user_created_foreign
+      on_update: NO ACTION
+      on_delete: NO ACTION
